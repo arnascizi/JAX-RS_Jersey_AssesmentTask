@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="Band" type="band"/>
+
+  <xs:element name="Disc" type="disc"/>
+
+  <xs:complexType name="disc">
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string" minOccurs="0"/>
+      <xs:element name="Time" type="xs:string" minOccurs="0"/>
+      <xs:element name="SongCount" type="xs:int"/>
+      <xs:element name="Condition" type="xs:unsignedShort"/>
+      <xs:element name="Used" type="xs:boolean"/>
+      <xs:element name="BandList" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="Band" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="band">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+      <xs:element name="Members" type="xs:int"/>
+      <xs:element name="Activity" type="xs:boolean"/>
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:int" use="required"/>
+  </xs:complexType>
+</xs:schema>
+
